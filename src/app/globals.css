@@ -61,6 +61,20 @@ body {
   font-family: var(--font-poppins);
 }
 
+.custom-substack-widget input {
+  background-color: var(--background-clr) !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 10px !important;
+  width: 100% !important;
+  color: #fff !important;
+}
+
+.custom-substack-widget button {
+  background-color: #fbc94c !important;
+  color: #373535 !important;
+}
+
 /* Spinner Animation */
 .spinner {
   width: 24px;

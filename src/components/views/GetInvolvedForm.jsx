@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import DonateCTA from "@/components/views/DonateCTA";
+import React, { useState, useRef } from "react";
+import { GrSend } from "react-icons/gr";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 const GetInvolvedForm = () => {
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -40,18 +44,32 @@ const GetInvolvedForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
+    setErrors(newErrors);
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-    } else {
+    if (Object.keys(newErrors).length > 0) return;
+
+    setLoading(true);
+    try {
+      const result = await emailjs.sendForm("service_5mrumzf", "template_du8fu11", form.current, {
+        publicKey: "FxSjGF3lMQqqss1JN",
+      });
+
+      toast.success("Form submitted successfully! 🎉");
+
+      // Redirect to Substack subscription page with pre-filled email
+      // const substackUrl = `https://tobiloba121394.substack.com/embed?email=${encodeURIComponent(formData.email)}`;
+     
+      // window.open(substackUrl, "_blank");
+      // Reset form
+      setFormData({ name: "", email: "", subject: "", message: "" });
       setErrors({});
-      console.log("Form Data:", formData);
-      // Reset form after submission
-      setFormData({ name: "", email: "", message: "" });
-      alert("Form submitted successfully!");
+    } catch (error) {
+      toast.error("Failed to send message. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,7 +89,7 @@ const GetInvolvedForm = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center w-full h-full bg-white rounded-2xl">
-        <form className="flex flex-col gap-8 p-8 items-start w-full flex-1" onSubmit={handleSubmit} autoComplete="off">
+        <form ref={form} className="flex flex-col gap-8 p-8 items-start w-full flex-1" onSubmit={handleSubmit} autoComplete="off">
           {/* Name */}
           <div className="flex flex-col gap-2 items-start w-full">
             <label htmlFor="name" className="text-base font-poppins font-semibold leading-[150%] text-dark">
@@ -157,11 +175,33 @@ const GetInvolvedForm = () => {
           </div>
 
           {/* form button */}
+
           <button
             type="submit"
-            className="w-full lg:inline-block py-2.5 px-6 rounded-2xl  cursor-pointer bg-green border border-transparent text-white font-poppins text-base font-semibold uppercase transition-all hover:bg-transparent hover:border-green hover:text-green"
+            disabled={
+              !formData.name.trim() ||
+              !formData.email.trim() ||
+              !formData.subject.trim() ||
+              !formData.message.trim() ||
+              Object.keys(errors).length > 0
+            }
+            className={`w-full py-2.5 px-6 rounded-2xl  border text-white font-poppins text-base font-semibold uppercase transition-all flex items-center justify-center gap-2  ${
+              !formData.name.trim() ||
+              !formData.email.trim() ||
+              !formData.subject.trim() ||
+              !formData.message.trim() ||
+              Object.keys(errors).length > 0
+                ? "bg-green/30 cursor-not-allowed"
+                : "bg-green hover:bg-transparent hover:border-green hover:text-green cursor-pointer group"
+            }`}
           >
-            Submit
+            <span className="">{loading ? "Sending..." : "Submit"}</span>
+            <GrSend
+              size={18}
+              className={`text-white transition-transform duration-300 ease-in-out ${
+                loading ? "animate-pulse" : "group-hover:translate-x-1 group-hover:text-green"
+              }`}
+            />
           </button>
         </form>
       </div>

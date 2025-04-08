@@ -1,7 +1,7 @@
 import "./globals.css";
 import Head from "next/head";
 import localFont from "next/font/local";
-import { Poppins } from "next/font/google";
+import Script from "next/script";
 import Header from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
 import { AppProvider } from "@/contexts/context";
@@ -51,6 +51,17 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className={`${poppins.variable} antialiased`}>
+        <Script id="custom-substack-widget" strategy="afterInteractive">
+          {`
+            window.CustomSubstackWidget = {
+             substackUrl: "tobiloba121394.substack.com",
+              placeholder: "example@gmail.com",
+              buttonText: "Subscribe",
+              theme: "blue",
+            };
+          `}
+        </Script>
+        <script src="https://substackapi.com/widget.js" async></script>
         {/* <body className={`antialiased`}> */}
         <AppProvider>
           <ToastContainer

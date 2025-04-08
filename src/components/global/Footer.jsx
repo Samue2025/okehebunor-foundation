@@ -26,7 +26,8 @@ const Footer = () => {
           </p>
           <div className="flex flex-col gap-2">
             <h3 className="text-white text-lg font-semibold">Subscribe to our newsletter</h3>
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-4 w-full">
+            <div id="custom-substack-embed"></div>
+            {/* <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-4 w-full">
               <input
                 type="email"
                 value={email}
@@ -37,7 +38,7 @@ const Footer = () => {
               <button type="submit" className="py-2.5 px-4 bg-yellow rounded-lg text-[#373535] text-base font-semibold w-full lg:w-fit">
                 Subscribe Now
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
 
@@ -85,10 +86,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="get-involved"
-                  className="text-white text-base hover:text-white/60"
-                >
+                <Link href="get-involved" className="text-white text-base hover:text-white/60">
                   Partnership
                 </Link>
               </li>
