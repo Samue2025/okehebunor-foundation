@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Custom Fonts */
+  --font-poppins: var(--font-poppins);
+
+  /* Custom Screens */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 480px; /* @media (min-width: 480px) */
+  --breakpoint-md: 768px; /* @media (min-width: 768px) */
+  --breakpoint-lg: 1024px; /* @media (min-width: 1024px) */
+  --breakpoint-xl: 1280px; /* @media (min-width: 1280px) */
+  --breakpoint-2xl: 1536px; /* @media (min-width: 1536px) */
+
+  /* Custom Colors */
+  --color-dark: #4f4949;
+  --color-white: #ffffff;
+  --color-yellow: #fbc94c;
+  --color-green: #34b090;
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    max-width: 1536px; /* 96rem */
+    margin-inline: auto;
+  }
+}
+
+@layer utilities {
+  .center {
+    @apply flex items-center justify-center;
+  }
+}
+
+@layer utilities {
+  .animate-scrollX {
+    animation: scrollX 20s linear infinite;
+  }
+
+  @keyframes scrollX {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-style: normal;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-style: normal;
+  background: var(--background);
+  color: var(--foreground, #4f4949);
+  font-family: var(--font-poppins);
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin 3s ease-in infinite;
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.9);
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  transition: visibility 0s ease, opacity 0.5s ease, transform 0.5s ease-in-out;
+}
+
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  line-height: 0;
+  box-sizing: border-box;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+/* .gallery {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  padding: 0 12px;
+}
+
+.gallery .gallery-item {
+  -webkit-transition: all 350ms ease;
+  transition: all 350ms ease;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+  }
+} */
