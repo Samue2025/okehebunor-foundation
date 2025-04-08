@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Okehebunor Foundation
 
-## Getting Started
+Welcome to the Okehebunor Foundation! Together, we create a brighter future by empowering underserved communities through education, healthcare, and sustainable development.
 
-First, run the development server:
+## 🌐 Website
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit our website: [Okehebunor Foundation](https://okehebunor-foundation.vercel.app/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📖 About Us
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The Okehebunor Foundation is dedicated to uplifting communities and transforming lives. Our mission is to provide opportunities, resources, and support to those in need. Through education, healthcare, and sustainable initiatives, we aim to create a world where everyone has the chance to thrive.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Pages
 
-## Learn More
+- **Programs & Events**: Learn about our impactful programs and events designed to make a difference.
+- **Volunteer Opportunities**: Join our network of passionate volunteers and contribute to meaningful causes.
+- **Donation Platform**: Support our initiatives by donating to various causes, including child support, education, and clean water projects.
+- **Blog & News**: Stay updated with the latest news and stories from our foundation.
+- **Gallery**: Explore moments captured during our events and initiatives.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Technologies Used
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Payment Integration**: [Paystack](https://paystack.com/)
+- **Notifications**: [React Toastify](https://fkhadra.github.io/react-toastify/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📞 Contact Us
 
-## Deploy on Vercel
+Have questions or want to collaborate? Reach out to us:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email**: [Okehebunorfoundation@gmail.com](mailto:Okehebunorfoundation@gmail.com)
+- **Phone**: +2347067834186
+- **Location**: Lagos, Nigeria
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ❤️ Support Us
+
+Your generosity makes a difference! Support our mission by donating or volunteering. Together, we can create a brighter future for those in need.
+
+[Donate Now](https://okehebunor-foundation.vercel.app/donations)
+
+---
+
+© 2023 Okehebunor Foundation. All rights reserved.
