@@ -75,6 +75,7 @@ const GetInvolvedForm = () => {
 
   return (
     <div
+    id="getInvolved"
       className="h-auto w-full bg-no-repeat bg-center bg-cover p-8 flex items-center justify-center gap-14 "
       style={{
         backgroundImage: "url('/assets/images/getinvolved.png')",

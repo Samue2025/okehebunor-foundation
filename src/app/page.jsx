@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { blogArr } from "./blog/page";
 import React, { useState, useEffect } from "react";
@@ -35,6 +36,11 @@ const imageArr = [
 ];
 
 const Home = () => {
+  const getInvolvedRef = useRef(null); // Create a ref for the GetInvolvedForm section
+
+  const scrollToGetInvolved = () => {
+    getInvolvedRef.current?.scrollIntoView({ behavior: "smooth" }); // Scroll to the section smoothly
+  };
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -139,6 +145,7 @@ const Home = () => {
               </button>
               <button
                 type="button"
+                onClick={scrollToGetInvolved}
                 className="inline-block py-2.5 px-6 rounded-2xl bg-green border border-transparent text-white font-poppins text-xs lg:text-base font-semibold uppercase transition-all hover:bg-transparent hover:border-white cursor-pointer"
               >
                 Get Involved
@@ -655,7 +662,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="lg:px-40 px-4 lg:py-24 py-14 bg-white flex flex-col gap-14 items-center">
+      <section ref={getInvolvedRef} className="lg:px-40 px-4 lg:py-24 py-14 bg-white flex flex-col gap-14 items-center">
         {/* header */}
         <div className="flex flex-col lg:flex-row items-center w-full justify-between">
           <div className="flex flex-col gap-1 items-start  max-w-[700px]">
@@ -670,6 +677,7 @@ const Home = () => {
             </p>
           </div>
         </div>
+
         <GetInvolvedForm />
       </section>
 
