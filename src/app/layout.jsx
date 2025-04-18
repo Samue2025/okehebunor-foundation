@@ -7,14 +7,8 @@ import Footer from "@/components/global/Footer";
 import { AppProvider } from "@/contexts/context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-// const poppins = Poppins({
-//   display: "swap",
-//   style: "normal",
-//   subsets: ["latin"],
-//   variable: "--font-poppins",
-//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-// });
 
 const poppins = localFont({
   src: [
