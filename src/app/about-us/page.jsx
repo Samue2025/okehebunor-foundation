@@ -72,7 +72,7 @@ const AboutUs = () => {
             <div className="flex items-center gap-4">
               {/* avatar */}
               <Image
-                src="/assets/images/avatar.svg"
+                src="/assets/images/samuel-team.jpg"
                 alt="avatar"
                 width={50}
                 height={50}
@@ -82,9 +82,11 @@ const AboutUs = () => {
               <div className="flex flex-col gap-1">
                 <h3 className="text-dark text-sm lg:text-base font-bold font-poppins leading-normal uppercase">
                   {" "}
-                  Samuel S. Okehebunor
+                  Amb. Comr. Samuel S. Okehebonor
                 </h3>
-                <p className="text-dark text-sm lg:text-base font-normal font-poppins leading-normal tracking-[2.1px]">CEO, FOUNDER</p>
+                <p className="text-dark text-sm lg:text-base font-normal font-poppins leading-normal tracking-[2.1px] uppercase">
+                  Founder & Global Director
+                </p>
               </div>
             </div>
             <Image
@@ -129,15 +131,13 @@ const AboutUs = () => {
       <DonateCTA />
 
       {/* about team */}
-      <section className="lg:px-40 px-4 lg:py-24 py-14 bg-white flex flex-col gap-6  w-full">
+      <section className="lg:px-40 px-4 lg:py-24 py-14 bg-white flex flex-col gap-6 w-full">
         <div className="flex flex-col lg:flex-row items-start justify-between w-full gap-6">
-          <div className="flex flex-col items-start gap-4 flex-1/2">
+          <div className="flex flex-col items-start gap-4 w-full lg:w-1/2">
             <span className="text-dark text-sm font-normal font-poppins leading-normal tracking-[2.1px] uppercase">OUR TEAM</span>
-
             <h2 className="text-dark text-[40px] font-bold font-poppins leading-[48px] capitalize">
               Meet the Passionate teams Behind Our Mission
             </h2>
-
             <p className="text-dark text-base font-poppins font-normal leading-normal">
               Our team is driven by a shared vision of making a difference in communities that need it most. With a deep commitment to
               service, our founders and volunteers work tirelessly to bring hope, resources, and empowerment to those facing challenges.
@@ -145,58 +145,56 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-4 w-full flex-1/2">
-            <figure className="relative">
-              <Image src={team3} alt="team" quality={100} className="object-cover rounded-lg" />
-              <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-                <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">CEO, Founder</h3>
-                <p className="text-white text-base text-center font-poppins font-normal leading-normal">Sunday Okehebunor</p>
-              </div>
-            </figure>
-
-            <figure className="relative">
-              <Image src={team2} alt="team" quality={100} className="object-cover rounded-lg" />
-              <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-                <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">Co-Founder</h3>
-                <p className="text-white text-base text-center font-poppins font-normal leading-normal">Lara Johnson King</p>
-              </div>
-            </figure>
+          <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-1/2">
+            {[
+              { src: team1, name: "Amb. Comr. Samuel S. Okehebonor" },
+              { src: team2, name: "Okoh Annastesia N" },
+            ].map((member, i) => (
+              <figure key={i} className="relative w-[268px] h-[389px]">
+                <Image src={member.src} alt="team" fill className="object-cover rounded-lg" quality={100} />
+                <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/80 to-transparent z-0" />
+                <div className="absolute bottom-0 left-0 p-4 w-full z-10">
+                  <h3 className="text-white text-center text-lg font-poppins font-bold leading-normal uppercase">{member.name}</h3>
+                  {/* <p className="text-white text-base text-center font-poppins font-normal leading-normal">{member.name}</p> */}
+                </div>
+              </figure>
+            ))}
           </div>
         </div>
 
-        {/* team below */}
         <div className="flex flex-col lg:flex-row items-center gap-[1.8rem] w-full">
-          <figure className="relative">
-            <Image src={team1} alt="team" quality={100} className="object-cover rounded-lg" />
-            <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-              <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">Head Volunteer</h3>
-              <p className="text-white text-base text-center font-poppins font-normal leading-normal">Sambi Lukemba</p>
-            </div>
-          </figure>
+          {[
+            {
+              src: team3,
+              title: "Head Volunteer",
+              name: "Anyadike Kingsley Ugochukwu",
+            },
+            {
+              src: team4,
+              title: "Volunteer",
+              name: "Okpara Chukwuka Micheal",
+            },
 
-          <figure className="relative">
-            <Image src={team4} alt="team" quality={100} className="object-cover rounded-lg" />
-            <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-              <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">Volunteer</h3>
-              <p className="text-white text-base text-center font-poppins font-normal leading-normal">Adama Olemabo</p>
-            </div>
-          </figure>
-
-          <figure className="relative">
-            <Image src={team5} alt="team" quality={100} className="object-cover rounded-lg" />
-            <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-              <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">Volunteer</h3>
-              <p className="text-white text-base text-center font-poppins font-normal leading-normal">Richard James</p>
-            </div>
-          </figure>
-
-          <figure className="relative">
-            <Image src={team6} alt="team" quality={100} className="object-cover rounded-lg" />
-            <div className="flec flex-col gap-2 items-start p-8 w-[268px] absolute bottom-0">
-              <h3 className="text-white text-center text-xl font-poppins font-bold leading-normal uppercase">Volunteer</h3>
-              <p className="text-white text-base text-center font-poppins font-normal leading-normal">Tamara Gbefade</p>
-            </div>
-          </figure>
+            {
+              src: team6,
+              title: "Volunteer",
+              name: "Engr.Ugeh Macdonald Odogwu",
+            },
+            {
+              src: team5,
+              title: "Volunteer",
+              name: "Ridwan Yusf",
+            },
+          ].map((member, i) => (
+            <figure key={i} className="relative w-[268px] h-[319px]">
+              <Image src={member.src} alt="team" fill className="object-cover rounded-lg" quality={100} />
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/80 to-transparent z-0" />
+              <div className="absolute bottom-0 left-0 p-4 w-full z-10">
+                <h3 className="text-white text-center text-lg font-poppins font-bold leading-normal uppercase">{member.name}</h3>
+                {/* <p className="text-white text-base text-center font-poppins font-normal leading-normal">{member.name}</p> */}
+              </div>
+            </figure>
+          ))}
         </div>
       </section>
     </>

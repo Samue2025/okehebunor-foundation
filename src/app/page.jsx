@@ -194,7 +194,7 @@ const Home = () => {
             <div className="flex items-center gap-4">
               {/* avatar */}
               <Image
-                src="/assets/images/avatar.svg"
+                src="/assets/images/samuel-team.jpg"
                 alt="avatar"
                 width={50}
                 height={50}
@@ -202,8 +202,13 @@ const Home = () => {
                 className="rounded-full object-cover"
               />
               <div className="flex flex-col gap-1">
-                <h3 className="text-dark text-sm lg:text-base font-bold font-poppins leading-normal uppercase"> Samuel S. Okehebunor</h3>
-                <p className="text-dark text-sm lg:text-base font-normal font-poppins leading-normal tracking-[2.1px]">CEO, FOUNDER</p>
+                <h3 className="text-dark text-sm lg:text-base font-bold font-poppins leading-normal uppercase">
+                  Amb. Comr. Samuel S. Okehebonor
+                </h3>
+                <p className="text-dark text-sm lg:text-base font-normal font-poppins leading-normal tracking-[2.1px] uppercase">
+                  {" "}
+                  Founder & Global Director
+                </p>
               </div>
             </div>
             <Image
