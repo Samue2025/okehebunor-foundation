@@ -29,3 +29,46 @@ export { default as partner5 } from "./partner-5.png";
 export { default as slide1 } from "./homeHeroBanner1.png";
 export { default as slide2 } from "./homeHeroBanner2.png";
 export { default as slide3 } from "./homeHeroBanner3.png";
+
+export { default as gallery1 } from "./gallery1.jpg";
+export { default as gallery2 } from "./gallery2.jpg";
+export { default as gallery3 } from "./gallery3.jpg";
+export { default as gallery4 } from "./gallery4.jpg";
+export { default as gallery5 } from "./gallery5.jpg";
+export { default as gallery6 } from "./gallery6.jpg";
+export { default as gallery7 } from "./gallery7.jpg";
+export { default as gallery8 } from "./gallery8.jpg";
+export { default as gallery9 } from "./gallery9.jpg";
+export { default as gallery10 } from "./gallery10.jpg";
+
+export { default as gallery11 } from "./gallery11.jpg";
+export { default as gallery12 } from "./gallery12.jpg";
+export { default as gallery13 } from "./gallery13.jpg";
+export { default as gallery14 } from "./gallery14.jpg";
+export { default as gallery15 } from "./gallery15.jpg";
+export { default as gallery16 } from "./gallery16.jpg";
+export { default as gallery17 } from "./gallery17.jpg";
+export { default as gallery18 } from "./gallery18.jpg";
+export { default as gallery19 } from "./gallery19.jpg";
+export { default as gallery20 } from "./gallery20.jpg";
+
+export { default as gallery21 } from "./gallery21.jpg";
+export { default as gallery22 } from "./gallery22.jpg";
+export { default as gallery23 } from "./gallery23.jpg";
+export { default as gallery24 } from "./gallery24.jpg";
+export { default as gallery25 } from "./gallery25.jpg";
+export { default as gallery26 } from "./gallery26.jpg";
+export { default as gallery27 } from "./gallery27.jpg";
+export { default as gallery28 } from "./gallery28.jpg";
+export { default as gallery29 } from "./gallery29.jpg";
+export { default as gallery30 } from "./gallery30.jpg";
+
+export { default as gallery31 } from "./gallery31.jpg";
+export { default as gallery32 } from "./gallery32.jpg";
+export { default as gallery33 } from "./gallery33.jpg";
+export { default as gallery34 } from "./gallery34.jpg";
+export { default as gallery35 } from "./gallery35.jpg";
+export { default as gallery36 } from "./gallery36.jpg";
+export { default as gallery37 } from "./gallery37.jpg";
+export { default as gallery38 } from "./gallery38.jpg";
+export { default as gallery39 } from "./gallery39.jpg";

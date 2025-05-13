@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { support1, support2, support3, support4, support5, give } from "../../../public/assets/images";
+import { gallery2, support3, give, gallery23, gallery33, gallery14 } from "../../../public/assets/images";
 import stripe from "../../../public/assets/icons/stripe.svg";
 import paypal from "../../../public/assets/icons/paypal.svg";
 import visa from "../../../public/assets/icons/visa.svg";
@@ -18,7 +18,7 @@ export const donationArr = [
     description: "Every child deserves a bright future. Your donation provides food, shelter, and education to underprivileged children.",
     donationNum: 2,
     donationPercent: "27%",
-    image: support1,
+    image: gallery2,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const donationArr = [
       "Education is the key to breaking the cycle of poverty. Help us provide books, school supplies, and tuition assistance to children in need.",
     donationNum: 5,
     donationPercent: "47%",
-    image: support2,
+    image: gallery23,
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const donationArr = [
     description: "We provide essential care, medical assistance, and emotional support to children facing hardships.",
     donationNum: 5,
     donationPercent: "47%",
-    image: support4,
+    image: gallery14,
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const donationArr = [
       "Empower mothers with the resources they need to provide for their children. Your support funds job training, healthcare, and shelter.",
     donationNum: 1,
     donationPercent: "7%",
-    image: support5,
+    image: gallery33,
   },
 ];
 
@@ -201,7 +201,7 @@ const Donation = () => {
               key={event.id}
               className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl h-[520px]"
             >
-              <Image src={event.image} alt={event.title} quality={100} className="w-full object-cover" />
+              <Image src={event.image} alt={event.title} quality={100} className="w-full md:w-[358px] h-[214px] object-cover" />
               <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
                 <div className="flex flex-col gap-4 items-start justify-center">
                   <h3 className="text-xl font-poppins font-bold text-dark leading-normal">{event.title}</h3>
