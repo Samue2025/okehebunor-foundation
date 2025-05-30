@@ -125,17 +125,11 @@ const Footer = () => {
           <Link href="https://www.facebook.com/okehebunorfoundation">
             <FaFacebook size={24} className="text-dark hover:text-dark/80" />
           </Link>
-          <Link href="https://www.instagram.com/okehebunorfoundation">
+          <Link href="https://www.instagram.com/okehebunor_foundation/profilecard/?igsh=MWFzc25iYnZraTJmdg==">
             <FaInstagram size={24} className="text-dark hover:text-dark/80" />
           </Link>
-          <Link href="https://www.linkedin.com/company/okehebunorfoundation">
-            <FaLinkedinIn size={24} className="text-dark hover:text-dark/80" />
-          </Link>
-          <Link href="https://www.twitter.com/okehebunorfoundation">
+          <Link href="https://twitter.com/realofoundation?s=21&t=tJ0STBDB6JACDxMsaSpB2w">
             <FaTwitter size={24} className="text-dark hover:text-dark/80" />
-          </Link>
-          <Link href="https://www.youtube.com/channel/UC/videos">
-            <FaYoutube size={24} className="text-dark hover:text-dark/80" />
           </Link>
         </div>
       </div>

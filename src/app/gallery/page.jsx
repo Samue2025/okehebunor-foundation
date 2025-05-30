@@ -4,6 +4,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
+  galleryA1,
+  galleryA2,
+  galleryA3,
+  galleryA4,
+  galleryA5,
+  galleryA6,
+  galleryA7,
+  galleryA8,
   gallery1,
   gallery2,
   gallery3,
@@ -46,6 +54,14 @@ import {
 } from "../../../public/assets/images";
 
 const images = [
+  galleryA1,
+  galleryA2,
+  galleryA3,
+  galleryA4,
+  galleryA5,
+  galleryA6,
+  galleryA7,
+  galleryA8,
   gallery1,
   gallery2,
   gallery3,

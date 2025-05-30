@@ -211,14 +211,14 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <Image
+            {/* <Image
               src="/assets/images/signature.png"
               alt="signature"
               width={137}
               height={36}
               quality={100}
               className="w-[90px] lg:w-[137px] h-full"
-            />
+            /> */}
           </div>
         </div>
       </section>

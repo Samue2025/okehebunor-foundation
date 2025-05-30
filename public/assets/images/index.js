@@ -30,6 +30,15 @@ export { default as slide1 } from "./homeHeroBanner1.png";
 export { default as slide2 } from "./homeHeroBanner2.png";
 export { default as slide3 } from "./homeHeroBanner3.png";
 
+export { default as galleryA1 } from "./galleryA1.jpg";
+export { default as galleryA2 } from "./galleryA2.jpg";
+export { default as galleryA3 } from "./galleryA3.jpg";
+export { default as galleryA4 } from "./galleryA4.jpg";
+export { default as galleryA5 } from "./galleryA5.jpg";
+export { default as galleryA6 } from "./galleryA6.jpg";
+export { default as galleryA7 } from "./galleryA7.jpg";
+export { default as galleryA8 } from "./galleryA8.jpg";
+
 export { default as gallery1 } from "./gallery1.jpg";
 export { default as gallery2 } from "./gallery2.jpg";
 export { default as gallery3 } from "./gallery3.jpg";
