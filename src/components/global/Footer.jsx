@@ -122,13 +122,13 @@ const Footer = () => {
           © {new Date().getFullYear()} Okehenbunor Foundation, All rights reserved.
         </small>
         <div className="flex items-center gap-4">
-          <Link href="https://www.facebook.com/okehebunorfoundation">
+          <Link href="https://web.facebook.com/share/p/18ksXEX4Y3/" target="_blank">
             <FaFacebook size={24} className="text-dark hover:text-dark/80" />
           </Link>
-          <Link href="https://www.instagram.com/okehebunor_foundation/profilecard/?igsh=MWFzc25iYnZraTJmdg==">
+          <Link href="https://www.instagram.com/okehebunor_foundation/profilecard/?igsh=MWFzc25iYnZraTJmdg==" target="_blank">
             <FaInstagram size={24} className="text-dark hover:text-dark/80" />
           </Link>
-          <Link href="https://twitter.com/realofoundation?s=21&t=tJ0STBDB6JACDxMsaSpB2w">
+          <Link href="https://twitter.com/realofoundation?s=21&t=tJ0STBDB6JACDxMsaSpB2w" target="_blank">
             <FaTwitter size={24} className="text-dark hover:text-dark/80" />
           </Link>
         </div>
