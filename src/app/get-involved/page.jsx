@@ -1,16 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
 import DonateCTA from "@/components/views/DonateCTA";
 import GetInvolvedForm from "@/components/views/GetInvolvedForm";
-import { motion } from "framer-motion";
 
 const GeInvolved = () => {
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
     <div>
@@ -18,29 +11,19 @@ const GeInvolved = () => {
       <section
         className="h-[493px] text-white-10 flex items-center justify-center lg:px-24 px-4  bg-no-repeat bg-center bg-cover "
         style={{
-          backgroundImage: "url('/assets/images/aboutHeroBanner.png')",
+          backgroundImage: "url('/assets/images/aboutHeroBanner.webp')",
         }}
       >
         <div className="flex flex-col items-center justify-center max-w-[608px]">
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
+          <h1 className="rise-in text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
           >
             Be Part of Us
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
+          <p className="rise-in-late text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
           >
             Discover our journey, our passion, and how you can be a part of something impactful.
-          </motion.p>
+          </p>
         </div>
       </section>
 

@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-import { FaChevronDown, FaCheckSquare, FaEnvelope, FaCreditCard } from "react-icons/fa";
+import { FaChevronDown, FaEnvelope } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { RiMenu2Fill, RiCloseLargeLine } from "react-icons/ri";
 import { logoWhite } from "../../../public/assets/images";
@@ -69,11 +68,11 @@ const Header = () => {
         {/* Navigation Bar */}
         <nav
           className="py-4 px-6 lg:px-40 flex justify-between items-center w-full text-white bg-dark bg-center bg-cover bg-no-repeat relative"
-          style={{ backgroundImage: "url('/assets/images/headerBanner.png')" }}
+          style={{ backgroundImage: "url('/assets/images/headerBanner.webp')" }}
         >
           {/* Logo */}
           <Link href="/">
-            <Image src={logoWhite} alt="BRS Floors" width={86} height={62} quality={100} />
+            <Image src={logoWhite} alt="Okehebunor Foundation" width={86} height={62} sizes="86px" />
           </Link>
 
           {/* Desktop Menu */}
@@ -125,12 +124,9 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <motion.div
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            className="lg:hidden bg-dark  w-full px-6 py-4 text-white space-y-4 absolute bg-center bg-cover bg-no-repeat bg-fixed"
-            style={{ backgroundImage: "url('/assets/images/headerBanner.png')" }}
+          <div
+            className="menu-in lg:hidden bg-dark w-full px-6 py-4 text-white space-y-4 absolute bg-center bg-cover bg-no-repeat"
+            style={{ backgroundImage: "url('/assets/images/headerBanner.webp')" }}
           >
             {navMenu.map((item) => (
               <div key={item.id} className="relative">
@@ -175,7 +171,7 @@ const Header = () => {
             >
               Donate Now
             </button>
-          </motion.div>
+          </div>
         )}
       </header>
 

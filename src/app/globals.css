@@ -2,7 +2,7 @@
 
 @theme inline {
   /* Custom Fonts */
-  --font-poppins: var(--font-poppins);
+  --font-poppins: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Custom Screens */
   --breakpoint-*: initial;
@@ -48,6 +48,42 @@
   }
 }
 
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.7s ease-out 0.05s both;
+}
+
+.rise-in-late {
+  animation: rise-in 0.7s ease-out 0.28s both;
+}
+
+.menu-in {
+  animation: rise-in 0.25s ease-out both;
+}
+
+.gallery-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 280px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in,
+  .rise-in-late,
+  .menu-in {
+    animation: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   font-style: normal;
@@ -59,20 +95,6 @@ body {
   background: var(--background);
   color: var(--foreground, #4f4949);
   font-family: var(--font-poppins);
-}
-
-.custom-substack-widget input {
-  background-color: var(--background-clr) !important;
-  border: 1px solid #ccc !important;
-  border-radius: 4px !important;
-  padding: 10px !important;
-  width: 100% !important;
-  color: #fff !important;
-}
-
-.custom-substack-widget button {
-  background-color: #fbc94c !important;
-  color: #373535 !important;
 }
 
 /* Spinner Animation */

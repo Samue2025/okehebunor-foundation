@@ -1,14 +1,18 @@
-import React from "react";
+"use client";
+
 import Image from "next/image";
+import { useGlobalContext } from "@/contexts/context";
 
 const DonateCTA = () => {
+  const { isModalOpen } = useGlobalContext();
+
   return (
     <section
       className="lg:h-[478px] text-white-10 flex items-center justify-center lg:px-40 px-4 py-24 bg-no-repeat bg-center bg-cover"
-      style={{ backgroundImage: "url('/assets/images/donateCTA.png')" }}
+      style={{ backgroundImage: "url('/assets/images/donateCTA.webp')" }}
     >
       <div className="flex flex-col items-center gap-6 justify-center max-w-4xl">
-        <Image src="/assets/icons/hand.svg" alt="hand" quality={100} width={94} height={94} />
+        <Image src="/assets/icons/hand.svg" alt="hand" width={94} height={94} />
         <h2 className="text-white text-[30px] lg:text-[40px] font-poppins font-bold leading-[43px] uppercase text-center">
           Empowering Communities, Changing Lives
         </h2>
@@ -18,6 +22,7 @@ const DonateCTA = () => {
         </p>
         <button
           type="button"
+          onClick={isModalOpen}
           className="w-fit lg:inline-block py-2.5 px-6 rounded-2xl bg-green border border-transparent text-white font-poppins text-base font-semibold uppercase transition-all hover:bg-green/50 hover:text-white"
         >
           Donate Now

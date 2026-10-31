@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { map } from "../../../public/assets/images";
 
 const ContactUs = () => {
@@ -12,10 +11,6 @@ const ContactUs = () => {
     email: "",
     message: "",
   });
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,29 +56,19 @@ const ContactUs = () => {
       <section
         className="h-[493px] text-white-10 flex items-center justify-center lg:px-24 px-4  bg-no-repeat bg-center bg-cover "
         style={{
-          backgroundImage: "url('/assets/images/contactHeroBanner.png')",
+          backgroundImage: "url('/assets/images/contactHeroBanner.webp')",
         }}
       >
         <div className="flex flex-col items-center justify-center max-w-[608px]">
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal text-center"
+          <h1 className="rise-in text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal text-center"
           >
             Contact Us
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="text-white text-base lg:text-lg font-normal font-poppins leading-normal"
+          <p className="rise-in-late text-white text-base lg:text-lg font-normal font-poppins leading-normal"
           >
             Have questions? We are here to help. Reach out to us anytime.
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -162,7 +147,7 @@ const ContactUs = () => {
 
         {/* map */}
         <div className="flex flex-col items-start gap-6  w-full flex-1">
-          <Image src={map} alt="map" quality={100} />
+          <Image src={map} alt="Map" sizes="(max-width: 1024px) 100vw, 640px" />
 
           <div className="grid grid-cols-1  items-start gap-4 w-full">
             {/* <div className="flex items-center gap-8 justify-between w-full">

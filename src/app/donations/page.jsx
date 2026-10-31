@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { gallery2, support3, give, gallery23, gallery33, gallery14 } from "../../../public/assets/images";
 import stripe from "../../../public/assets/icons/stripe.svg";
 import paypal from "../../../public/assets/icons/paypal.svg";
@@ -78,10 +77,6 @@ const Donation = () => {
     setCustomMode(true);
     setFormData((prevData) => ({ ...prevData, amount: "" }));
   };
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
   const { isModalOpen, showModal, isModalClose } = useGlobalContext();
 
   const getPercentValue = (percentString) => parseInt(percentString.replace("%", ""));
@@ -91,22 +86,22 @@ const Donation = () => {
       <section
         className="h-screen text-white-10 flex items-center justify-center lg:px-40 px-4 bg-no-repeat bg-center bg-cover "
         style={{
-          backgroundImage: "url('/assets/images/donateHeroBanner.png')",
+          backgroundImage: "url('/assets/images/donateHeroBanner.webp')",
         }}
       >
         <div className="flex flex-col lg:flex-row gap-14 items-center">
           <div className="flex flex-col gap-4 items-center flex-1/2">
-            <Image src={give} alt="give" quality={100} />
+            <Image src={give} alt="give" />
             <p className="text-white text-center text-sm font-normal leading-normal uppercase tracking-[2.1px]">Donate Now!</p>
             <p className="text-white text-center text-base font-normal leading-normal">
               Join us in making a difference! Your contributions help support education, healthcare, and essential resources for those in
               need.
             </p>
             <div className="flex items-center gap-4">
-              <Image src={stripe} alt="stripe" quality={100} />
-              <Image src={visa} alt="visa" quality={100} />
-              <Image src={paypal} alt="paypal" quality={100} />
-              <Image src={master} alt="mastercard" quality={100} />
+              <Image src={stripe} alt="stripe" />
+              <Image src={visa} alt="visa" />
+              <Image src={paypal} alt="paypal" />
+              <Image src={master} alt="mastercard" />
             </div>
 
             <div className="flex items-center justify-center w-full gap-4">
@@ -201,7 +196,7 @@ const Donation = () => {
               key={event.id}
               className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl h-[520px]"
             >
-              <Image src={event.image} alt={event.title} quality={100} className="w-full md:w-[358px] h-[214px] object-cover" />
+              <Image src={event.image} alt={event.title} sizes="358px" className="w-full md:w-[358px] h-[214px] object-cover" />
               <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
                 <div className="flex flex-col gap-4 items-start justify-center">
                   <h3 className="text-xl font-poppins font-bold text-dark leading-normal">{event.title}</h3>

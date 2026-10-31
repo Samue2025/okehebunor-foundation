@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { FaSearch, FaTimes } from "react-icons/fa";
-import { motion } from "framer-motion";
 import { blog1, blog2 } from "../../../public/assets/images";
 
 export const blogArr = [
@@ -40,11 +38,8 @@ export const blogArr = [
 const Blog = () => {
   const [articles, setArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState("ngo");
-  const [sortOption, setSortOption] = useState("latest");
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
-
-  const API_URL = `https://newsapi.org/v2/everything?q=${searchQuery}&language=en&sortBy=popularity&apiKey=936f4527d49640cfae821ce52b6ec046`;
 
   useEffect(() => {
     fetchArticles();
@@ -52,7 +47,12 @@ const Blog = () => {
 
   const fetchArticles = async () => {
     try {
-      const response = await fetch(`${API_URL}&page=${page}&pageSize=20&sortBy=${sortOption}`);
+      const params = new URLSearchParams({
+        q: searchQuery,
+        page: String(page),
+        pageSize: "9",
+      });
+      const response = await fetch(`/api/news?${params}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -75,11 +75,6 @@ const Blog = () => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") console.log("Search Query:", searchQuery);
   };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
   const handleNextPage = () => {
     if (page * 10 < totalResults) {
       setPage((prev) => prev + 1);
@@ -98,28 +93,18 @@ const Blog = () => {
     <>
       <section
         className="h-[493px] text-white-10 flex items-center justify-center lg:px-24 px-4  bg-no-repeat bg-center bg-cover "
-        style={{ backgroundImage: "url('/assets/images/aboutHeroBanner.png')" }}
+        style={{ backgroundImage: "url('/assets/images/aboutHeroBanner.webp')" }}
       >
         <div className="flex flex-col items-center justify-center max-w-[608px]">
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
+          <h1 className="rise-in text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
           >
             News & Media
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
+          <p className="rise-in-late text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
           >
             Read about our blog posts anywhere
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -180,13 +165,14 @@ const Blog = () => {
               key={index}
               className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl h-auto md:h-[600px]"
             >
-              <Image
-                src={article?.urlToImage || blog1}
-                alt={article.title}
+              <img
+                src={article?.urlToImage || "/assets/images/blog1.webp"}
+                alt=""
                 width={400}
-                height={250}
-                quality={100}
-                className="w-full object-cover"
+                height={220}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-[220px] object-cover bg-[#f3f3f3]"
               />
               <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
                 <div className="flex flex-col gap-4 items-start justify-center">
@@ -220,12 +206,12 @@ const Blog = () => {
             Previous
           </button>
           <span className="text-dark font-poppins text-base">
-            Page {page} of {Math.ceil(totalResults / 10)}
+            Page {page} of {Math.max(1, Math.ceil(totalResults / 9))}
           </span>
           <button
             onClick={handleNextPage}
-            disabled={page * 10 >= totalResults}
-            className={`py-2 px-4 rounded-lg ${page * 10 >= totalResults ? "bg-gray-300 cursor-not-allowed" : "bg-green text-white"}`}
+            disabled={page * 9 >= totalResults}
+            className={`py-2 px-4 rounded-lg ${page * 9 >= totalResults ? "bg-gray-300 cursor-not-allowed" : "bg-green text-white"}`}
           >
             Next
           </button>

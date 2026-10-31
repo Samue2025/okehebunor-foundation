@@ -1,10 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { blogArr } from "./blog/page";
-import React, { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import DonateModal from "@/components/views/DonateModal";
 import { useGlobalContext } from "@/contexts/context";
 import {
@@ -42,40 +39,24 @@ const Home = () => {
     getInvolvedRef.current?.scrollIntoView({ behavior: "smooth" }); // Scroll to the section smoothly
   };
   const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
-
-  const API_URL = `https://newsapi.org/v2/everything?q=nigeria&language=en&sortBy=popularity&apiKey=936f4527d49640cfae821ce52b6ec046`;
 
   useEffect(() => {
-    fetchArticles();
-  }, [page]);
+    const controller = new AbortController();
 
-  const fetchArticles = async () => {
-    try {
-      const response = await fetch(`${API_URL}&page=${page}&pageSize=20`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      if (data.status === "ok") {
-        setArticles(data.articles); // Replace instead of append
-      }
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-    }
-  };
+    fetch("/api/news?q=nigeria&pageSize=9", { signal: controller.signal })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "ok") setArticles(data.articles || []);
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") console.error("Error fetching articles:", error);
+      });
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
+    return () => controller.abort();
+  }, []);
 
   const { isModalOpen, showModal, isModalClose } = useGlobalContext();
   const [activeSlide, setActiveSlide] = useState(0);
-
-  const handleDotClick = (index) => {
-    setActiveSlide(index);
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -92,42 +73,31 @@ const Home = () => {
         {/* background image container */}
         <div className="absolute inset-0 z-0">
           {slides.map((slide, index) => (
-            <motion.div
-              key={index}
-              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-              style={{ backgroundImage: `url(${slide.src})` }}
-              initial={{ opacity: index === activeSlide ? 1 : 0 }}
-              animate={{ opacity: index === activeSlide ? 1 : 0 }}
-              transition={{ duration: 1 }}
+            <Image
+              key={slide.src}
+              src={slide}
+              alt=""
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className={`object-cover transition-opacity duration-700 ${index === activeSlide ? "opacity-100" : "opacity-0"}`}
             />
           ))}
         </div>
         <div className="relative z-10 flex flex-col items-start gap-6 justify-center max-w-[550px]">
-          <motion.div
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="flex flex-col items-start -gap-6"
-          >
+          <div className="rise-in flex flex-col items-start -gap-6">
             <h1 className="text-white text-5xl lg:text-6xl font-bold font-poppins leading-[120%] text-center flex items-center justify-center">
-              Together, <Image src="/assets/images/together.svg" alt="future" width={33} height={35} quality={100} />
+              Together, <Image src="/assets/images/together.svg" alt="future" width={33} height={35} />
             </h1>
             <h1 className="text-white text-5xl lg:text-6xl font-bold font-poppins leading-[120%] text-center">We Create</h1>
             <h1 className="text-yellow text-5xl lg:text-6xl font-bold font-poppins leading-[120%] text-center">A Brighter</h1>
             <h1 className="text-green text-5xl lg:text-6xl font-bold font-poppins leading-[120%] text-center flex items-center justify-center">
               Future.
-              <Image src="/assets/images/future.svg" alt="future" width={65} height={27} quality={100} />
+              <Image src="/assets/images/future.svg" alt="future" width={65} height={27} />
             </h1>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="flex flex-col gap-4 items-start"
-          >
+          <div className="rise-in-late flex flex-col gap-4 items-start">
             <p className="text-white text-base lg:text-lg font-normal font-poppins leading-normal">
               Empowering underserved communities through education, healthcare, and sustainable development. At Okehebunor Foundation, we
               turn hope into reality by fostering opportunities for all.
@@ -151,7 +121,7 @@ const Home = () => {
                 Get Involved
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -161,7 +131,7 @@ const Home = () => {
           <div className="flex justify-between flex-nowrap gap-6 snap-x snap-mandatory scroll-smooth">
             {imageArr.map((i) => (
               <div key={i.id} className="snap-start shrink-0 w-[140px] h-auto flex items-center justify-center">
-                <Image src={i.img} alt="partner" quality={100} className="object-contain w-full h-auto" />
+                <Image src={i.img} alt="" sizes="140px" className="object-contain w-full h-auto" />
               </div>
             ))}
           </div>
@@ -172,7 +142,7 @@ const Home = () => {
       <section className="lg:px-40 px-4 lg:py-24 py-14 bg-white flex flex-col lg:flex-row gap-14 items-center">
         {/* image */}
         <figure className="flex-1/2 relative w-full">
-          <Image src={aboutImg2} alt="about" quality={100} className="object-cover w-full h-full" />
+          <Image src={aboutImg2} alt="Community members supported by the foundation" sizes="(max-width: 1024px) 100vw, 640px" className="object-cover w-full h-full" />
           <div className="bg-[#FB723C8C] absolute bottom-[-20px] left-0 h-[132px] w-[120px] flex flex-col items-center justify-center gap-2 ">
             <h2 className="text-7xl text-white text-center font-black leading-[100%]">4+</h2>
             <p className="text-white text-center text-sm font-normal uppercase leading-normal tracking-[2.1px]">Years</p>
@@ -194,11 +164,11 @@ const Home = () => {
             <div className="flex items-center gap-4">
               {/* avatar */}
               <Image
-                src="/assets/images/samuel-team.jpg"
+                src="/assets/images/samuel-team.webp"
                 alt="avatar"
                 width={50}
                 height={50}
-                quality={100}
+                sizes="50px"
                 className="rounded-full object-cover"
               />
               <div className="flex flex-col gap-1">
@@ -216,7 +186,7 @@ const Home = () => {
               alt="signature"
               width={137}
               height={36}
-              quality={100}
+             
               className="w-[90px] lg:w-[137px] h-full"
             /> */}
           </div>
@@ -229,7 +199,7 @@ const Home = () => {
         <div
           className="bg-no-repeat bg-center bg-cover h-[281px] w-full lg:flex-1 center"
           style={{
-            backgroundImage: "url('/assets/images/result1.png')",
+            backgroundImage: "url('/assets/images/result1.webp')",
           }}
         >
           <div className="flex flex-col gap-4 items-start w-[320px]">
@@ -254,7 +224,7 @@ const Home = () => {
         <div
           className="bg-no-repeat bg-center bg-cover h-[329px] w-full lg:flex-1 center "
           style={{
-            backgroundImage: "url('/assets/images/result2.png')",
+            backgroundImage: "url('/assets/images/result2.webp')",
           }}
         >
           <div className="flex flex-col gap-4 items-center w-[320px] mx-auto">
@@ -292,7 +262,7 @@ const Home = () => {
         <div
           className="bg-no-repeat bg-center bg-cover h-[281px] w-full lg:flex-1 center"
           style={{
-            backgroundImage: "url('/assets/images/result3.png')",
+            backgroundImage: "url('/assets/images/result3.webp')",
           }}
         >
           <div className="flex flex-col gap-4 items-center w-[320px]">
@@ -330,7 +300,7 @@ const Home = () => {
 
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           <div className="flex flex-col lg:flex-row items-start bg-white rounded-md shadow-sm overflow-hidden">
-            <Image src={program1} alt="food outreach" quality={100} className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
+            <Image src={program1} alt="Food outreach" sizes="(max-width: 1024px) 100vw, 360px" className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
 
             <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full lg:flex-1/2">
               <div className="flex flex-col gap-4 items-start justify-center">
@@ -359,7 +329,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row items-start bg-white rounded-md shadow-sm overflow-hidden">
-            <Image src={program2} alt="Volunteering" quality={100} className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
+            <Image src={program2} alt="Volunteering" sizes="(max-width: 1024px) 100vw, 360px" className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
 
             <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full lg:flex-1/2">
               <div className="flex flex-col gap-4 items-start justify-center">
@@ -392,7 +362,7 @@ const Home = () => {
       <section
         className="h-[619px] text-white-10 flex items-start lg:px-40 px-4 py-20 bg-no-repeat bg-center bg-cover "
         style={{
-          backgroundImage: "url('/assets/images/homeStats.png')",
+          backgroundImage: "url('/assets/images/homeStats.webp')",
         }}
       >
         {/* header */}
@@ -426,7 +396,7 @@ const Home = () => {
           <div
             className=" bg-no-repeat bg-center bg-cover w-full h-[300px] "
             style={{
-              backgroundImage: "url('/assets/images/feature1.png')",
+              backgroundImage: "url('/assets/images/feature1.webp')",
             }}
           ></div>
 
@@ -438,7 +408,7 @@ const Home = () => {
           <div
             className=" bg-no-repeat bg-center bg-cover w-full h-[300px] "
             style={{
-              backgroundImage: "url('/assets/images/feature2.png')",
+              backgroundImage: "url('/assets/images/feature2.webp')",
             }}
           ></div>
 
@@ -450,7 +420,7 @@ const Home = () => {
           <div
             className=" bg-no-repeat bg-center bg-cover w-full h-[300px] order-2 lg:order-none "
             style={{
-              backgroundImage: "url('/assets/images/feature3.png')",
+              backgroundImage: "url('/assets/images/feature3.webp')",
             }}
           ></div>
 
@@ -463,7 +433,7 @@ const Home = () => {
         {/* Feature Grid 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start w-full -translate-y-40 lg:-translate-y-50">
           <div className="flex flex-col gap-4 items-start bg-[#1D604F] p-8 rounded">
-            <Image src="/assets/images/featureicon1.svg" alt="Programs and Events" width={86} height={86} quality={100} />
+            <Image src="/assets/images/featureicon1.svg" alt="Programs and Events" width={86} height={86} />
             <h3 className="text-white text-xl font-bold leading-normal">Programs & Events</h3>
             <p className="text-white text-xl font-normal leading-normal">
               Discover our impactful programs and events designed to uplift communities and provide resources for a better future.
@@ -477,7 +447,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col gap-4 items-start bg-[#1D604F] p-8 rounded">
-            <Image src="/assets/images/featureicon2.svg" alt="Focus Areas" width={86} height={86} quality={100} />
+            <Image src="/assets/images/featureicon2.svg" alt="Focus Areas" width={86} height={86} />
             <h3 className="text-white text-xl font-bold leading-normal">Focus Areas</h3>
             <p className="text-white text-xl font-normal leading-normal">
               We prioritize education, employment, and mentorship to create opportunities for underserved communities.
@@ -491,7 +461,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col gap-4 items-start bg-[#1D604F] p-8 rounded">
-            <Image src="/assets/images/featureicon3.svg" alt="Volunteers" width={86} height={86} quality={100} />
+            <Image src="/assets/images/featureicon3.svg" alt="Volunteers" width={86} height={86} />
             <h3 className="text-white text-xl font-bold leading-normal">Volunteers</h3>
             <p className="text-white text-xl font-normal leading-normal">
               Join our dedicated network of volunteers and be part of a movement that transforms lives through service and advocacy.
@@ -526,7 +496,7 @@ const Home = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 items-start gap-6 w-full">
           <div className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl ">
-            <Image src={support3} alt="support" quality={100} className="w-full object-cover" />
+            <Image src={support3} alt="Water well project" sizes="(max-width: 1024px) 100vw, 420px" className="w-full object-cover" />
 
             <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
               <div className="flex flex-col gap-4 items-start justify-center">
@@ -556,7 +526,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl">
-            <Image src={support5} alt="support" quality={100} className="w-full object-cover" />
+            <Image src={support5} alt="Support for mothers" sizes="(max-width: 1024px) 100vw, 420px" className="w-full object-cover" />
 
             <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
               <div className="flex flex-col gap-4 items-start justify-center">
@@ -587,7 +557,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl">
-            <Image src={support2} alt="support" quality={100} className="w-full object-cover" />
+            <Image src={support2} alt="Child support and education" sizes="(max-width: 1024px) 100vw, 420px" className="w-full object-cover" />
 
             <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
               <div className="flex flex-col gap-4 items-start justify-center">
@@ -635,13 +605,14 @@ const Home = () => {
               key={index}
               className="flex flex-col items-start bg-white rounded-md shadow-sm border border-dark/20 overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl h-auto md:h-[600px]"
             >
-              <Image
-                src={article?.urlToImage || blog1}
-                alt={article.title}
+              <img
+                src={article?.urlToImage || "/assets/images/blog1.webp"}
+                alt=""
                 width={400}
-                height={250}
-                quality={100}
-                className="w-full object-cover"
+                height={220}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-[220px] object-cover bg-[#f3f3f3]"
               />
               <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full">
                 <div className="flex flex-col gap-4 items-start justify-center">

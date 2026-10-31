@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaSearch, FaTimes, FaList } from "react-icons/fa";
 import { BiSolidGridAlt } from "react-icons/bi";
-import { motion } from "framer-motion";
 import { program1, program2, program3, program4 } from "../../../public/assets/images";
 import DonateCTA from "@/components/views/DonateCTA";
 
@@ -64,39 +63,24 @@ const Programs = () => {
     if (e.key === "Enter") console.log("Search Query:", searchQuery);
   };
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   const filteredEvents = eventArr.filter((event) => event.title.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <>
       <section
         className="h-[493px] text-white-10 flex items-center justify-center lg:px-40 px-4 bg-no-repeat bg-center bg-cover"
-        style={{ backgroundImage: "url('/assets/images/programHeroBanner.png')" }}
+        style={{ backgroundImage: "url('/assets/images/programHeroBanner.webp')" }}
       >
         <div className="flex flex-col items-center justify-center max-w-[608px]">
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal text-center"
+          <h1 className="rise-in text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal text-center"
           >
             Our Events
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="text-white text-base lg:text-lg font-normal font-poppins leading-normal"
+          <p className="rise-in-late text-white text-base lg:text-lg font-normal font-poppins leading-normal"
           >
             Read about our event and know how you can be part of it.
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -162,7 +146,7 @@ const Programs = () => {
         >
           {filteredEvents.map((event) => (
             <div key={event.id} className="flex flex-col lg:flex-row items-start bg-white rounded-md shadow-sm overflow-hidden">
-              <Image src={event.image} alt={event.title} quality={100} className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
+              <Image src={event.image} alt={event.title} sizes="(max-width: 1024px) 100vw, 360px" className="w-full h-[357px] lg:h-full object-cover lg:flex-1/2" />
 
               <div className="p-6 flex flex-col gap-4 items-start justify-between h-full w-full lg:flex-1/2">
                 <div className="flex flex-col gap-4 items-start justify-center">

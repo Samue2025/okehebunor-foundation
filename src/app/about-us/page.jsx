@@ -1,16 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
 import DonateCTA from "@/components/views/DonateCTA";
-import { motion } from "framer-motion";
 import { aboutImg, team1, team2, team3, team4, team5, team6 } from "../../../public/assets/images";
 
 const AboutUs = () => {
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
     <>
@@ -18,38 +12,28 @@ const AboutUs = () => {
       <section
         className="h-[493px] text-white-10 flex items-center justify-center lg:px-24 px-4  bg-no-repeat bg-center bg-cover "
         style={{
-          backgroundImage: "url('/assets/images/aboutHeroBanner.png')",
+          backgroundImage: "url('/assets/images/aboutHeroBanner.webp')",
         }}
       >
         <div className="flex flex-col items-center justify-center max-w-[608px]">
-          <motion.h1
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
+          <h1 className="rise-in text-white text-[36px] lg:text-6xl font-bold font-poppins leading-normal"
           >
             About Us
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-            className="text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
+          <p className="rise-in-late text-white text-base lg:text-lg font-normal font-poppins leading-normal text-center"
           >
             Discover our journey, our passion, and how you can be a part of something impactful.
-          </motion.p>
+          </p>
         </div>
       </section>
 
       <section className="lg:px-40 px-4 lg:py-0 py-14 bg-white flex flex-col lg:flex-row gap-14 items-center">
         {/* image */}
         <figure className="flex-1/2 relative">
-          <Image src={aboutImg} alt="about" quality={100} className="object-cover" />
+          <Image src={aboutImg} alt="About the foundation" sizes="(max-width: 1024px) 100vw, 640px" className="object-cover" />
           <div className="bg-green/80 absolute top-0 right-0 h-full w-[200px] flex flex-col items-center justify-center gap-2 ">
-            <Image src="/assets/icons/hand.svg" alt="hand" quality={100} width={94} height={94} />
+            <Image src="/assets/icons/hand.svg" alt="" width={94} height={94} sizes="94px" />
             <h2 className="text-6xl text-white text-center font-black leading-[100%]">4+</h2>
             <p className="text-white text-center text-sm font-normal uppercase leading-normal tracking-[2.1px]">Years of giving</p>
           </div>
@@ -72,11 +56,11 @@ const AboutUs = () => {
             <div className="flex items-center gap-4">
               {/* avatar */}
               <Image
-                src="/assets/images/samuel-team.jpg"
+                src="/assets/images/samuel-team.webp"
                 alt="avatar"
                 width={50}
                 height={50}
-                quality={100}
+                sizes="50px"
                 className="rounded-full object-cover"
               />
               <div className="flex flex-col gap-1">
@@ -94,7 +78,7 @@ const AboutUs = () => {
               alt="signature"
               width={137}
               height={36}
-              quality={100}
+             
               className="w-[90px] lg:w-[137px] h-full"
             /> */}
           </div>
@@ -151,7 +135,7 @@ const AboutUs = () => {
               { src: team2, name: "Okoh Annastesia N" },
             ].map((member, i) => (
               <figure key={i} className="relative w-[268px] h-[389px]">
-                <Image src={member.src} alt="team" fill className="object-cover rounded-lg" quality={100} />
+                <Image src={member.src} alt={member.name} fill sizes="268px" className="object-cover rounded-lg" />
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/80 to-transparent z-0" />
                 <div className="absolute bottom-0 left-0 p-4 w-full z-10">
                   <h3 className="text-white text-center text-lg font-poppins font-bold leading-normal uppercase">{member.name}</h3>
@@ -187,7 +171,7 @@ const AboutUs = () => {
             },
           ].map((member, i) => (
             <figure key={i} className="relative w-[268px] h-[319px]">
-              <Image src={member.src} alt="team" fill className="object-cover rounded-lg" quality={100} />
+              <Image src={member.src} alt={member.name} fill sizes="268px" className="object-cover rounded-lg" />
               <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/80 to-transparent z-0" />
               <div className="absolute bottom-0 left-0 p-4 w-full z-10">
                 <h3 className="text-white text-center text-lg font-poppins font-bold leading-normal uppercase">{member.name}</h3>

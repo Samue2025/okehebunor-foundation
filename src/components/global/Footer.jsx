@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { logoWhite } from "../../../public/assets/images";
@@ -10,36 +7,17 @@ import { FaFacebook, FaYoutube, FaInstagram, FaLinkedinIn, FaTwitter, FaEnvelope
 import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const handleSubmit = (e) => e.preventDefault();
-
   return (
     <footer className="bg-dark w-full flex flex-col">
       {/* Top Section */}
       <div className="flex flex-col gap-10 lg:flex-row lg:justify-between py-16 px-6 md:px-16 lg:px-40">
         {/* Left Container */}
         <div className="flex flex-col gap-6 lg:w-1/3">
-          <Image src={logoWhite} alt="Okenhebunor Foundation Logo" quality={100} width={150} height={150} />
+          <Image src={logoWhite} alt="Okehebunor Foundation" width={150} height={150} sizes="150px" />
           <p className="text-white text-base font-poppins leading-[150%]">
             Empowering underserved communities through education, healthcare, and sustainable growth. Your support makes a difference in
             transforming lives.
           </p>
-          <div className="flex flex-col gap-2">
-            <h3 className="text-white text-lg font-semibold">Subscribe to our newsletter</h3>
-            <div id="custom-substack-embed"></div>
-            {/* <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center gap-4 w-full">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="py-2.5 px-4 w-full sm:w-auto flex-1 rounded-lg bg-transparent border border-[#E8EBEB] text-white text-base placeholder:text-[#939393]"
-              />
-              <button type="submit" className="py-2.5 px-4 bg-yellow rounded-lg text-[#373535] text-base font-semibold w-full lg:w-fit">
-                Subscribe Now
-              </button>
-            </form> */}
-          </div>
         </div>
 
         {/* Right Container */}

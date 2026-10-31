@@ -2,7 +2,6 @@
 
 import React, { useState, useRef } from "react";
 import { GrSend } from "react-icons/gr";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 
 const GetInvolvedForm = () => {
@@ -53,7 +52,8 @@ const GetInvolvedForm = () => {
 
     setLoading(true);
     try {
-      const result = await emailjs.sendForm("service_5mrumzf", "template_du8fu11", form.current, {
+      const { default: emailjs } = await import("@emailjs/browser");
+      await emailjs.sendForm("service_5mrumzf", "template_du8fu11", form.current, {
         publicKey: "FxSjGF3lMQqqss1JN",
       });
 
@@ -78,7 +78,7 @@ const GetInvolvedForm = () => {
     id="getInvolved"
       className="h-auto w-full bg-no-repeat bg-center bg-cover p-8 flex items-center justify-center gap-14 "
       style={{
-        backgroundImage: "url('/assets/images/getinvolved.png')",
+        backgroundImage: "url('/assets/images/getinvolved.webp')",
       }}
     >
       <div className="self-star flex flex-col gap-4 items-start w-full ">

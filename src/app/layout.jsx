@@ -1,14 +1,10 @@
 import "./globals.css";
-import Head from "next/head";
 import localFont from "next/font/local";
-import Script from "next/script";
 import Header from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
 import { AppProvider } from "@/contexts/context";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-
 
 const poppins = localFont({
   src: [
@@ -22,41 +18,36 @@ const poppins = localFont({
   display: "swap",
 });
 
+const title = "Okehebunor-Foundation | Together we create a brighter future";
+const description =
+  "Empowering underserved communities through education, healthcare, and sustainable growth. Your support makes a difference in transforming lives.";
+
 export const metadata = {
-  title: "Okehebunor-Foundation | Together we create a brighter future",
-  description:
-    "Empowering underserved communities through education, healthcare, and sustainable growth. Your support makes a difference in transforming lives.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    images: ["/assets/images/homeHeroBanner1.webp"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/assets/images/homeHeroBanner1.webp"],
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content={metadata.description} />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:image" content="/images/og-image.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metadata.title} />
-        <meta name="twitter:description" content={metadata.description} />
-        <meta name="twitter:image" content="/images/og-image.jpg" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <body className={`${poppins.variable} antialiased`}>
-        <Script id="custom-substack-widget" strategy="afterInteractive">
-          {`
-            window.CustomSubstackWidget = {
-             substackUrl: "tobiloba121394.substack.com",
-              placeholder: "example@gmail.com",
-              buttonText: "Subscribe",
-              theme: "blue",
-            };
-          `}
-        </Script>
-        <script src="https://substackapi.com/widget.js" async></script>
-        {/* <body className={`antialiased`}> */}
         <AppProvider>
           <ToastContainer
             position="top-right"
